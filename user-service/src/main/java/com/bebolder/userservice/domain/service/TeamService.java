@@ -3,10 +3,12 @@ package com.bebolder.userservice.domain.service;
 import com.bebolder.userservice.domain.dto.TeamDTO;
 import com.bebolder.userservice.domain.repository.ITeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class TeamService {
     @Autowired
     ITeamRepository teamRepository;

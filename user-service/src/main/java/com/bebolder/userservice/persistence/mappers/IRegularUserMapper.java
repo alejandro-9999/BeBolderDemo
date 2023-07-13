@@ -11,8 +11,8 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
-public interface IRegularUserMapper extends IUserMapper{
+@Mapper()
+public interface IRegularUserMapper{
     IRegularUserMapper INSTANCE = Mappers.getMapper( IRegularUserMapper.class );
 
     @Mappings({

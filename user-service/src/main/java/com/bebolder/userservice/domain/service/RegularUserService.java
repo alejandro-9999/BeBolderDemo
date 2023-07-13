@@ -1,6 +1,5 @@
 package com.bebolder.userservice.domain.service;
 
-import com.bebolder.userservice.domain.dto.EmployeeDTO;
 import com.bebolder.userservice.domain.dto.RegularUserDTO;
 import com.bebolder.userservice.domain.repository.IRegularUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

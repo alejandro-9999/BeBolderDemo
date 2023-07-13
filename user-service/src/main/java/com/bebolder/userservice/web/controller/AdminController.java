@@ -19,9 +19,9 @@ public class AdminController
     public List<AdminDTO> getAll(){
         return adminService.getAll();
     }
-a
+
     @GetMapping("/{id}")
-    public Optional<AdminDTO> getProduct(@PathVariable("id") Long adminId) {
+    public Optional<AdminDTO> getAdmin(@PathVariable("id") Long adminId) {
         return  adminService.getAdmin(adminId);
     }
 
@@ -31,8 +31,8 @@ a
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable("id") Long adminID){
-        return  adminService.delete(adminID);
+    public boolean delete(@PathVariable("id") Long adminId){
+        return  adminService.delete(adminId);
     }
 
 }

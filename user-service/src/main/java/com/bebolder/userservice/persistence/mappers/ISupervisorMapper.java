@@ -7,12 +7,13 @@ import com.bebolder.userservice.persistence.entity.Supervisor;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.mapstruct.Qualifier;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
-public interface ISupervisorMapper extends IUserMapper{
+@Mapper()
+public interface ISupervisorMapper{
     ISupervisorMapper INSTANCE = Mappers.getMapper( ISupervisorMapper.class );
 
     @Mappings({

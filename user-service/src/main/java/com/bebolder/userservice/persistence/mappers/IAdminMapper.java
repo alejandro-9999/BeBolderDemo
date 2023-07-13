@@ -10,8 +10,8 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
-public interface IAdminMapper extends IUserMapper{
+@Mapper()
+public interface IAdminMapper{
     IAdminMapper INSTANCE = Mappers.getMapper( IAdminMapper.class );
     @Mappings({
             @Mapping(source = "id", target = "userId")

@@ -6,10 +6,12 @@ import com.bebolder.userservice.persistence.crud.IUserCrudRepository;
 import com.bebolder.userservice.persistence.entity.User;
 import com.bebolder.userservice.persistence.mappers.IUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class UserRepository implements IUserRepository {
     @Autowired
     private IUserCrudRepository userCrudRepository;

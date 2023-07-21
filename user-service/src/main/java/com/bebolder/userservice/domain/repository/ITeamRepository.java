@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface ITeamRepository {
     List<TeamDTO> getAll();
-    Optional<TeamDTO> getTeam(Long teamId);
+    Optional<TeamDTO> getTeam(long teamId);
     TeamDTO save(TeamDTO teamDTO);
     void delete(long teamId);
 }

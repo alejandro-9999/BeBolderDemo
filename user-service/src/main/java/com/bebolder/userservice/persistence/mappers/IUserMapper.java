@@ -10,9 +10,6 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface IUserMapper {
-
-    IUserMapper INSTANCE = Mappers.getMapper( IUserMapper.class );
-
     @Mappings({
             @Mapping(source = "id", target = "userId")
     })

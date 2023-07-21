@@ -3,26 +3,26 @@ package com.bebolder.userservice.persistence.mappers;
 
 import com.bebolder.userservice.domain.dto.EmployeeDTO;
 import com.bebolder.userservice.persistence.entity.Employee;
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper(uses = {IUserMapper.class, ITeamMapper.class})
+@Mapper(componentModel = "spring", uses = {IUserMapper.class, ITeamMapper.class, ISupervisorMapper.class})
 public interface IEmployeeMapper {
-    IEmployeeMapper INSTANCE = Mappers.getMapper(IEmployeeMapper.class);
+
     @Mapping(source = "id", target = "employeeId")
     @Mapping(source = "user", target = "user")
     @Mapping(source = "dateOfEntry", target = "dateOfEntry")
     @Mapping(source = "retirementDate", target = "retirementDate")
-    EmployeeDTO employeeToEmployeeDTO(Employee employee);
-    List<EmployeeDTO> toEmployeesDTO(List<Employee> employees);
+    @Mapping(source = "supervisor.id", target = "supervisor.userId")
+    @Mapping(target = "team", ignore = true)
+    EmployeeDTO toDto(Employee employee);
 
-    @Mapping(source = "employeeId", target = "id")
-    @Mapping(source = "user", target = "user")
-    @Mapping(source = "dateOfEntry", target = "dateOfEntry")
-    @Mapping(source = "retirementDate", target = "retirementDate")
-    Employee employeeDTOToEmployee(EmployeeDTO employeeDTO);
+    List<EmployeeDTO> toArrayDto(List<Employee> employees);
 
+    @InheritInverseConfiguration
+    @Mapping(source="team.teamId",target = "team.id")
+    Employee toEntity(EmployeeDTO employeeDTO);
 }

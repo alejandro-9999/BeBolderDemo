@@ -21,7 +21,7 @@ public class RegularUserController
     }
 
     @GetMapping("/{id}")
-    public Optional<RegularUserDTO> getRegularUser(@PathVariable("id") Long regularUserId) {
+    public Optional<RegularUserDTO> getRegularUser(@PathVariable("id") long regularUserId) {
         return  regularUserService.getRegularUser(regularUserId);
     }
 
@@ -31,7 +31,7 @@ public class RegularUserController
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable("id") Long regularUserId){
+    public boolean delete(@PathVariable("id") long regularUserId){
         return  regularUserService.delete(regularUserId);
     }
 

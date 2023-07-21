@@ -25,7 +25,7 @@ public class UserService {
         return userRepository.save(UserDTO);
     }
 
-    public Boolean delete(Long userId){
+    public Boolean delete(long userId){
         return getUser(userId).map(UserDTO -> {
             userRepository.delete(userId);
             return true;

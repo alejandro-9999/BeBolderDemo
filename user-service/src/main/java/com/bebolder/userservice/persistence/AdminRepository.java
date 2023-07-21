@@ -25,7 +25,7 @@ public class AdminRepository implements IAdminRepository {
     }
 
     @Override
-    public Optional<AdminDTO> getAdmin(Long adminId) {
+    public Optional<AdminDTO> getAdmin(long adminId) {
         return adminCrudRepository.findById(adminId).map(admin -> adminMapper.adminToAdminDTO(admin));
     }
 

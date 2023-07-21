@@ -26,7 +26,7 @@ public class RegularUserRepository implements IRegularUserRepository {
     }
 
     @Override
-    public Optional<RegularUserDTO> getRegularUser(Long regularUserId) {
+    public Optional<RegularUserDTO> getRegularUser(long regularUserId) {
         return regularUserCrudRepository.findById(regularUserId).map(regularUser -> regularUserMapper.regularUserToRegularUserDTO(regularUser));
     }
 

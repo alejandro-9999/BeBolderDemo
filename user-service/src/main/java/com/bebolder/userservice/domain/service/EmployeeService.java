@@ -27,7 +27,7 @@ public class EmployeeService {
         return employeeRepository.save(employeeDTO);
     }
 
-    public Boolean delete(Long employeeId){
+    public Boolean delete(long employeeId){
         return getEmployee(employeeId).map(employeeDTO -> {
             employeeRepository.delete(employeeId);
             return true;

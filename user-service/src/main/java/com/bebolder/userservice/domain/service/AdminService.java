@@ -26,7 +26,7 @@ public class AdminService {
         return adminRepository.save(adminDTO);
     }
 
-    public Boolean delete(Long adminId){
+    public Boolean delete(long adminId){
         return getAdmin(adminId).map(adminDTO -> {
             adminRepository.delete(adminId);
             return true;

@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface IRegularUserRepository {
     List<RegularUserDTO> getAll();
-    Optional<RegularUserDTO> getRegularUser(Long regularUserId);
+    Optional<RegularUserDTO> getRegularUser(long regularUserId);
     RegularUserDTO save(RegularUserDTO regularUserDTO);
     void delete(long regularUserId);
 }

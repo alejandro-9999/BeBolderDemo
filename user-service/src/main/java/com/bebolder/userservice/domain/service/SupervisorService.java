@@ -27,7 +27,7 @@ public class SupervisorService {
         return supervisorRepository.save(supervisorDTO);
     }
 
-    public Boolean delete(Long supervisorId){
+    public Boolean delete(long supervisorId){
         return getSupervisor(supervisorId).map(SupervisorDTO -> {
             supervisorRepository.delete(supervisorId);
             return true;

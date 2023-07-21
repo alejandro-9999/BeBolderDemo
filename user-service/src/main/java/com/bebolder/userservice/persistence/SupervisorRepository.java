@@ -28,14 +28,14 @@ public class SupervisorRepository implements ISupervisorRepository {
     }
 
     @Override
-    public Optional<SupervisorDTO> getSupervisor(Long supervisorId) {
+    public Optional<SupervisorDTO> getSupervisor(long supervisorId) {
         return supervisorCrudRepository.findById(supervisorId).map(supervisor -> supervisorMapper.supervisorToRegularSupervisorDTO(supervisor));
     }
 
     @Override
     public SupervisorDTO save(SupervisorDTO supervisorDTO) {
-        Supervisor supervisor = supervisorCrudRepository.save(supervisorMapper.supervisorDTOToSupervisor(supervisorDTO));
-        return supervisorMapper.supervisorToRegularSupervisorDTO(supervisor);
+        Supervisor supervisor = supervisorMapper.supervisorDTOToSupervisor(supervisorDTO);
+        return supervisorMapper.supervisorToRegularSupervisorDTO( supervisorCrudRepository.save(supervisor));
     }
 
     @Override

@@ -17,28 +17,33 @@ public class EmployeeRepository implements IEmployeeRepository {
     @Autowired
     private IEmployeeCrudRepository employeeCrudRepository;
 
+
+    private final IEmployeeMapper employeeMapper;
     @Autowired
-    private IEmployeeMapper employeeMapper;
+    public EmployeeRepository(IEmployeeMapper employeeMapper) {
+        this.employeeMapper = employeeMapper;
+    }
 
 
     @Override
     public List<EmployeeDTO> getAll() {
         List<Employee> employees = (List<Employee>) employeeCrudRepository.findAll();
-        return employeeMapper.toEmployeesDTO(employees);
+        return employeeMapper.toArrayDto(employees);
     }
 
     @Override
-    public Optional<EmployeeDTO> getEmployee(Long employeeId) {
-        return employeeCrudRepository.findById(employeeId).map(employee -> employeeMapper.employeeToEmployeeDTO(employee));
+    public Optional<EmployeeDTO> getEmployee(long employeeId) {
+        return employeeCrudRepository.findById(employeeId).map(employee -> employeeMapper.toDto(employee));
     }
 
     @Override
     public EmployeeDTO save(EmployeeDTO employeeDTO) {
-        return null;
+        Employee employee = employeeMapper.toEntity(employeeDTO);
+        return employeeMapper.toDto(employeeCrudRepository.save(employee));
     }
 
     @Override
     public void delete(long employeeId) {
-
+        employeeCrudRepository.deleteById(employeeId);
     }
 }

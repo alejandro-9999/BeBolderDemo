@@ -21,7 +21,7 @@ public class AdminController
     }
 
     @GetMapping("/{id}")
-    public Optional<AdminDTO> getAdmin(@PathVariable("id") Long adminId) {
+    public Optional<AdminDTO> getAdmin(@PathVariable("id") long adminId) {
         return  adminService.getAdmin(adminId);
     }
 
@@ -31,7 +31,7 @@ public class AdminController
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable("id") Long adminId){
+    public boolean delete(@PathVariable("id") long adminId){
         return  adminService.delete(adminId);
     }
 

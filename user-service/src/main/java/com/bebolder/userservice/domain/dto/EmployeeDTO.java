@@ -21,6 +21,6 @@ public class EmployeeDTO {
     private Date dateOfEntry;
     private Date retirementDate;
     private String typeOfContract;
-    private Supervisor supervisor;
-    private Team team;
+    private SupervisorDTO supervisor;
+    private TeamDTO team;
 }

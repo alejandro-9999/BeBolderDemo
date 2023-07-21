@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/supervisor")
@@ -15,13 +16,15 @@ public class SupervisorController
     @Autowired
     private SupervisorService supervisorService;
 
+    private static final Logger logger = Logger.getLogger(EmployeeController.class.getName());
+
     @GetMapping("/all")
     public List<SupervisorDTO> getAll(){
         return supervisorService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<SupervisorDTO> getSupervisor(@PathVariable("id") Long supervisorId) {
+    public Optional<SupervisorDTO> getSupervisor(@PathVariable("id") long supervisorId) {
         return  supervisorService.getSupervisor(supervisorId);
     }
 
@@ -31,7 +34,7 @@ public class SupervisorController
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable("id") Long supervisorId){
+    public boolean delete(@PathVariable("id") long supervisorId){
         return  supervisorService.delete(supervisorId);
     }
 

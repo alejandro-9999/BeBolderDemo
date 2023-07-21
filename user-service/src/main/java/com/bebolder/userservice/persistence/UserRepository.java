@@ -26,7 +26,7 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public Optional<UserDTO> getUser(Long userId) {
+    public Optional<UserDTO> getUser(long userId) {
         return userCrudRepository.findById(userId).map(user -> userMapper.userToUserDTO(user));
     }
 

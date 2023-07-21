@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface ISupervisorRepository {
     List<SupervisorDTO> getAll();
-    Optional<SupervisorDTO> getSupervisor(Long supervisorId);
+    Optional<SupervisorDTO> getSupervisor(long supervisorId);
     SupervisorDTO save(SupervisorDTO supervisorDTO);
     void delete(long supervisorId);
 }

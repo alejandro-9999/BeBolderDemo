@@ -10,8 +10,17 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class TeamDTO {
+    private long teamId;
+    private String name;
+    private List<EmployeeDTO> members;
+    private SupervisorDTO supervisor;
 
-    protected long teamId;
-    private List<Employee> members;
-    private Supervisor supervisor;
+    public TeamDTO(long teamId) {
+        this.teamId = teamId;
+    }
+
+    public TeamDTO(String name, SupervisorDTO supervisor) {
+        this.name = name;
+        this.supervisor = supervisor;
+    }
 }

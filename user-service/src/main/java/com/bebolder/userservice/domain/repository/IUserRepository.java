@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface IUserRepository {
     List<UserDTO> getAll();
-    Optional<UserDTO> getUser(Long userId);
+    Optional<UserDTO> getUser(long userId);
     UserDTO save(UserDTO userDTO);
     void delete(long userId);
 }

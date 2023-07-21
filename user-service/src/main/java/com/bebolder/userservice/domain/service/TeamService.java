@@ -1,5 +1,6 @@
 package com.bebolder.userservice.domain.service;
 
+import com.bebolder.userservice.domain.dto.EmployeeDTO;
 import com.bebolder.userservice.domain.dto.TeamDTO;
 import com.bebolder.userservice.domain.repository.ITeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,11 @@ public class TeamService {
         return teamRepository.getTeam(teamId);
     }
 
-    public TeamDTO save(TeamDTO TeamDTO){
-        return teamRepository.save(TeamDTO);
+    public TeamDTO save(TeamDTO teamDTO){
+        return teamRepository.save(teamDTO);
     }
 
-    public Boolean delete(Long teamId){
+    public Boolean delete(long teamId){
         return getTeam(teamId).map(TeamDTO -> {
             teamRepository.delete(teamId);
             return true;

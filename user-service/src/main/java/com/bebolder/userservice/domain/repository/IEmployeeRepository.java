@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface IEmployeeRepository {
     List<EmployeeDTO> getAll();
-    Optional<EmployeeDTO> getEmployee(Long employeeId);
+    Optional<EmployeeDTO> getEmployee(long employeeId);
     EmployeeDTO save(EmployeeDTO employeeDTO);
     void delete(long employeeId);
 }

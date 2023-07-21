@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface IAdminRepository {
     List<AdminDTO> getAll();
-    Optional<AdminDTO> getAdmin(Long adminId);
+    Optional<AdminDTO> getAdmin(long adminId);
     AdminDTO save(AdminDTO adminDTO);
     void delete(long adminId);
 }

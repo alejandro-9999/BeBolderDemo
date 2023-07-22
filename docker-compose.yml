@@ -26,7 +26,7 @@ services:
     ports:
       - "3308:3306"
     volumes:
-      - ./notification_service_mysql:/var/lib/mysql
+      - ./notification_service_mysql:/var/lib/mysql 
 volumes:
   users_service_mysql:
   vacation_request_service_mysql:

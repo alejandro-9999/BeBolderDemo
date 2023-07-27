@@ -1,0 +1,167 @@
+<div class="employee-registration-container">
+  <p-card class="employee-registration-card container">
+    <div class="registration-header">
+      <h1>Registrar Empleado</h1>
+    </div>
+
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      <div class="employee-registration-form">
+        <div class="input-container gap-3">
+          <div class="flex flex-column gap-2">
+            <input
+              placeholder="Document"
+              type="text"
+              pInputText
+              formControlName="document"
+            />
+            <small
+              class="error-msg"
+              *ngIf="
+                documentControl.invalid &&
+                documentControl.dirty &&
+                documentControl.hasError('required')
+              "
+              >Document is required.</small
+            >
+          </div>
+          <div class="flex flex-column gap-2">
+
+            <p-dropdown formControlName="documentType" [options]="documentTypes" optionValue="code" optionLabel="name"></p-dropdown>
+            <small
+              class="error-msg"
+              *ngIf="
+                documentTypeControl.invalid &&
+                documentTypeControl.dirty &&
+                documentTypeControl.hasError('required')
+              "
+              >Document Type is required.</small
+            >
+          </div>
+
+          <div class="flex flex-column gap-2">
+            <input
+              placeholder="First Name"
+              type="text"
+              pInputText
+              formControlName="firstName"
+            />
+            <small
+              class="error-msg"
+              *ngIf="
+                firstNameControl.invalid &&
+                firstNameControl.dirty &&
+                firstNameControl.hasError('required')
+              "
+              >First Name is required.</small
+            >
+          </div>
+          <div class="flex flex-column gap-2">
+            <input
+              placeholder="Last Name"
+              type="text"
+              pInputText
+              formControlName="lastName"
+            />
+            <small
+              class="error-msg"
+              *ngIf="
+                lastNameControl.invalid &&
+                lastNameControl.dirty &&
+                lastNameControl.hasError('required')
+              "
+              >Last Name is required.</small
+            >
+          </div>
+          <div class="flex flex-column gap-2">
+            <input
+              placeholder="Phone Number (xxx-xxxx-xxx)"
+              type="text"
+              pInputText
+              formControlName="phoneNumber"
+            />
+            <small
+              class="error-msg"
+              *ngIf="
+                phoneNumberControl.invalid &&
+                phoneNumberControl.dirty &&
+                phoneNumberControl.hasError('required')
+              "
+              >Phone Number is required.</small
+            >
+          </div>
+          <div class="flex flex-column gap-2">
+            <textarea
+              placeholder="Address"
+              pInputTextarea
+              rows="1"
+              formControlName="address"
+            ></textarea>
+            <small
+              class="error-msg"
+              *ngIf="
+                addressControl.invalid &&
+                addressControl.dirty &&
+                addressControl.hasError('required')
+              "
+              >Address is required.</small
+            >
+          </div>
+          <div class="flex flex-column gap-2">
+            <p-calendar
+              placeholder="Date of Entry"
+              formControlName="dateOfEntry"
+            ></p-calendar>
+            <small
+              class="error-msg"
+              *ngIf="
+                dateOfEntryControl.invalid &&
+                dateOfEntryControl.dirty &&
+                dateOfEntryControl.hasError('required')
+              "
+              >Date of Entry is required.</small
+            >
+          </div>
+
+          <div class="flex flex-column gap-2">
+            <div class="flex flex-column gap-2">
+              <div class="flex flex-wrap radio-container">
+                <div class="flex align-items-center">
+                  <p-radioButton
+                    value="Labor Contract"
+                    formControlName="typeOfContract"
+                  ></p-radioButton>
+                  <label> Contrato Indefinido</label>
+                </div>
+                <div class="flex align-items-center">
+                  <p-radioButton
+                    value="Temporal Contract"
+                    formControlName="typeOfContract"
+                  ></p-radioButton>
+                  <label> Contrato Temporal</label>
+                </div>
+              </div>
+              <small
+                class="error-msg"
+                *ngIf="
+                  typeOfContractControl.invalid &&
+                  typeOfContractControl.dirty &&
+                  typeOfContractControl.hasError('required')
+                "
+                >Contract Type is required.</small
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="registration-footer">
+        <div class="button-container">
+          <p-button
+            [disabled]="employeeForm.invalid"
+            type="submit"
+            label="Register Employee"
+          ></p-button>
+        </div>
+      </div>
+    </form>
+  </p-card>
+</div>

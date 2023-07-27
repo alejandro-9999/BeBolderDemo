@@ -1,0 +1,38 @@
+<div class="login-container">
+  <p-card class="login-card">
+    <ng-template #headerTemplate>
+      <img src="ruta-a-tu-logo.png" alt="Logo" class="logo" />
+    </ng-template>
+    <div class="login-form">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="login-form">
+          <div class="input-container">
+            <input placeholder="Usuario" type="text" pInputText formControlName="username" />
+            <div class="errors-container" *ngIf="userNameControl.invalid && userNameControl.dirty">
+              <small id="username-help" class="error-msg" *ngIf="userNameControl.hasError('required')">Debe ingresar un usuario.</small>
+            </div>
+          </div>
+
+          <div class="input-container">
+            <p-password
+              placeholder="Contraseña"
+              formControlName="password"
+            ></p-password>
+            <div class="errors-container" *ngIf="passwordControl.invalid && passwordControl.dirty">
+              <small id="username-help" class="error-msg" *ngIf="passwordControl.hasError('required')">Debe ingresar una contraseña.</small>
+            </div>
+          </div>
+
+          <div class="button-container">
+            <p-button [disabled]="loginForm.invalid" type="submit" label="Iniciar sesión"></p-button>
+          </div>
+          <p-divider></p-divider>
+          <!-- Enlace para registrarse -->
+          <div class="register-link">
+            ¿Aún no tienes una cuenta? <a [routerLink]="['/register']">Registrarse</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </p-card>
+</div>

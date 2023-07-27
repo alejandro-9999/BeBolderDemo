@@ -1,0 +1,59 @@
+/* Estilos para el contenedor principal */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f2f5; /* Color de fondo */
+
+  @media (max-width: 767px) {
+    align-items: flex-start;
+    padding-top: 20%;
+  }
+}
+
+/* Estilos para el formulario */
+.login-card {
+  width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el logo */
+.logo {
+  width: 100px; /* Ajusta el tamaño del logo según tus necesidades */
+  height: 100px; /* Ajusta el tamaño del logo según tus necesidades */
+  display: block;
+  margin: 20px auto;
+}
+
+/* Estilos para los campos de entrada */
+.input-container {
+  margin-bottom: 15px;
+}
+
+/* Estilos para el botón de inicio de sesión */
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Estilos para el enlace "¿Olvidaste tu contraseña?" o similares */
+.login-link {
+  color: #1877f2; /* Color del enlace */
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+
+.login-form {
+  display: grid;
+  place-items: center; /* Centrar en ambas direcciones */
+}
+
+.input-container {
+  width: 100%;
+  display: grid;
+}

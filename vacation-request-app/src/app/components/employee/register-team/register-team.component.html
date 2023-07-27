@@ -1,0 +1,38 @@
+<div class="registration-container">
+  <p-card class="registration-card">
+    <div class="registration-form">
+      <form [formGroup]="addTeamForm" (ngSubmit)="onSubmit()">
+        <div class="input-container gap-3">
+          <div class="input-container">
+            <h1>Crear Equipo</h1>
+
+            <input
+              placeholder="Nombre del equipo"
+              type="text"
+              pInputText
+              formControlName="name"
+            />
+            <div
+              class="errors-container"
+              *ngIf="nameControl.invalid && nameControl.dirty"
+            >
+              <small
+                id="name-help"
+                class="error-msg"
+                *ngIf="nameControl.hasError('required')"
+                >El nombre del equipo es requerido.</small
+              >
+            </div>
+          </div>
+        </div>
+        <div class="button-container">
+          <p-button
+            [disabled]="addTeamForm.invalid"
+            type="submit"
+            label="Crear"
+          ></p-button>
+        </div>
+      </form>
+    </div>
+  </p-card>
+</div>

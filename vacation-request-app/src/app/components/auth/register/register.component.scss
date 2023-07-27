@@ -1,0 +1,45 @@
+/* Add your custom styles for the registration component here */
+.registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f2f5; /* Color de fondo */
+
+  @media (max-width: 767px) {
+    align-items: flex-start;
+    padding-top: 20%;
+  }
+}
+
+/* Estilos para el formulario de registro */
+.registration-card {
+  width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los campos de entrada */
+.input-container {
+  margin-bottom: 15px;
+}
+
+/* Estilos para el botón de registro */
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Estilos para los mensajes de error */
+
+.registration-form {
+  display: grid;
+  place-items: center; /* Centrar en ambas direcciones */
+}
+
+
+
+.input-container-radio{
+  margin-bottom: 15px;
+  padding: 10px;
+}

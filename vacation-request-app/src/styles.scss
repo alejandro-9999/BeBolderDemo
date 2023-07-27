@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+/* Para SASS */
+@import '~primeng/resources/themes/viva-light/theme.css';
+@import "primeicons/primeicons.css";
+@import "~primeflex/primeflex.css";
+body {
+  font-family: var(--font-family);
+  margin: 0px;
+}
+
+
+.error-msg{
+  color: var(--red-300);
+}

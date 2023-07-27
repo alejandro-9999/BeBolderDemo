@@ -1,0 +1,146 @@
+<div class="registration-container">
+  <p-card class="registration-card">
+    <div class="registration-form">
+      <h1>Registrar Usuario</h1>
+      <form [formGroup]="registrationForm" class="registration-form" (ngSubmit)="onSubmit()">
+        <!-- User Type Radio Buttons -->
+        <div class="input-container-radio flex flex-wrap gap-3">
+          <div class="flex align-items-center">
+            <p-radioButton
+              name="userType"
+              value="admin"
+              formControlName="userType"
+            ></p-radioButton>
+            <label class="ml-4"> Administrador</label>
+          </div>
+          <div class="flex align-items-center">
+            <p-radioButton
+              name="userType"
+              value="supervisor"
+              formControlName="userType"
+              ></p-radioButton
+            >
+            <label class="ml-4"> Supervisor</label>
+          </div>
+          <div class="flex align-items-center">
+            <p-radioButton
+              name="userType"
+              value="regularUser"
+              formControlName="userType"
+              >Regular User</p-radioButton
+            >
+            <label class="ml-4"> Usuario Regular</label>
+          </div>
+        </div>
+
+        <div class="input-container">
+          <input
+            placeholder="Usuario"
+            type="text"
+            pInputText
+            formControlName="username"
+          />
+          <div
+            class="errors-container"
+            *ngIf="usernameControl.invalid && usernameControl.dirty"
+          >
+            <small
+              id="username-help"
+              class="error-msg"
+              *ngIf="usernameControl.hasError('required')"
+              >Username is required.</small
+            >
+          </div>
+        </div>
+
+        <div class="input-container">
+          <input
+            placeholder="Email"
+            type="email"
+            pInputText
+            formControlName="email"
+          />
+          <div
+            class="errors-container"
+            *ngIf="emailControl.invalid && emailControl.dirty"
+          >
+            <small
+              id="email-help"
+              class="error-msg"
+              *ngIf="emailControl.hasError('required')"
+              >Email is required.</small
+            >
+            <small
+              id="email-help"
+              class="error-msg"
+              *ngIf="emailControl.hasError('email')"
+              >Invalid email format.</small
+            >
+          </div>
+        </div>
+
+        <div class="input-container">
+          <p-password
+            placeholder="Contraseña"
+            formControlName="password"
+          ></p-password>
+          <div
+            class="errors-container"
+            *ngIf="passwordControl.invalid && passwordControl.dirty"
+          >
+            <small
+              id="password-help"
+              class="error-msg"
+              *ngIf="passwordControl.hasError('required')"
+              >Password is required.</small
+            >
+          </div>
+        </div>
+
+        <div class="input-container">
+          <p-password
+            placeholder="Contraseña"
+            formControlName="confirmPassword"
+          ></p-password>
+          <div
+            class="errors-container"
+            *ngIf="
+              confirmPasswordControl.invalid && confirmPasswordControl.dirty
+            "
+          >
+            <small
+              id="confirm-password-help"
+              class="error-msg"
+              *ngIf="confirmPasswordControl.hasError('required')"
+              >Confirm password is required.</small
+            >
+          </div>
+          <small
+            id="confirm-password-help"
+            class="error-msg"
+            *ngIf="
+              registrationForm.hasError('passwordMismatch') &&
+              confirmPasswordControl.dirty
+            "
+            >Passwords do not match.</small
+          >
+        </div>
+
+        <div class="button-container">
+          <p-button
+            [disabled]="registrationForm.invalid"
+            type="submit"
+            label="Register"
+          ></p-button>
+        </div>
+
+        <p-divider></p-divider>
+        <!-- Enlace para registrarse -->
+        <div class="register-link">
+          ¿Ya tienes una cuenta?
+          <a [routerLink]="['/login']">Iniciar Session</a>
+        </div>
+      </form>
+    </div>
+  </p-card>
+</div>

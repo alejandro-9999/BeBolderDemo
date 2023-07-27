@@ -1,0 +1,76 @@
+/* Add your custom styles for the employee registration component here */
+.employee-registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f2f5; /* Color de fondo */
+
+  @media (max-width: 767px) {
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+}
+
+/* Estilos para el formulario de registro de empleado */
+.employee-registration-card {
+
+  @media (max-width: 767px) {
+    max-width: 100%;
+  }
+
+  max-width: 45%;
+
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Estilos para los campos de entrada */
+.input-container {
+  width: 100%;
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 15px;
+  padding: auto;
+}
+
+/* Estilos para los mensajes de error */
+.error-msg {
+  color: red;
+}
+
+.employee-registration-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.form-column {
+  display: grid;
+}
+
+
+.registration-header {
+  display: grid;
+  place-items: center; /* Centrar en ambas direcciones */
+}
+
+
+.registration-footer {
+  display: grid;
+  place-items: center; /* Centrar en ambas direcciones */
+}
+
+
+.radio-container{
+  min-width: 350px;
+}

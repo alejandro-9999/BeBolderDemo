@@ -3,6 +3,7 @@ package com.bebolder.vacationrequestsservice.web.controller;
 import com.bebolder.vacationrequestsservice.domain.dto.VacationRequestDTO;
 import com.bebolder.vacationrequestsservice.domain.service.VacationRequestService;
 import com.bebolder.vacationrequestsservice.persistence.VacationRequestRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,5 +1,6 @@
 package com.bebolder.userservice.domain.repository;
 
+import com.bebolder.userservice.domain.dto.RegularUserDTO;
 import com.bebolder.userservice.domain.dto.SupervisorDTO;
 import org.springframework.stereotype.Repository;
 
@@ -13,4 +14,6 @@ public interface ISupervisorRepository {
     Optional<SupervisorDTO> getSupervisor(long supervisorId);
     SupervisorDTO save(SupervisorDTO supervisorDTO);
     void delete(long supervisorId);
+    Optional<SupervisorDTO> findByUsername(String username);
+    Optional<SupervisorDTO> findByEmail(String email);
 }

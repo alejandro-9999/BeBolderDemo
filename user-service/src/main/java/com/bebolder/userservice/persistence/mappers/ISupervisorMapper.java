@@ -16,7 +16,8 @@ import java.util.List;
 public interface ISupervisorMapper{
 
     @Mappings({
-            @Mapping(source = "id", target = "userId")
+            @Mapping(source = "id", target = "userId"),
+            @Mapping(target = "role", ignore = true)
     })
     SupervisorDTO supervisorToRegularSupervisorDTO(Supervisor supervisor);
 

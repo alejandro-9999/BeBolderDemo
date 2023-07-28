@@ -1,5 +1,6 @@
 package com.bebolder.userservice.domain.repository;
 
+import com.bebolder.userservice.domain.dto.AdminDTO;
 import com.bebolder.userservice.domain.dto.RegularUserDTO;
 import org.springframework.stereotype.Repository;
 
@@ -13,4 +14,6 @@ public interface IRegularUserRepository {
     Optional<RegularUserDTO> getRegularUser(long regularUserId);
     RegularUserDTO save(RegularUserDTO regularUserDTO);
     void delete(long regularUserId);
+    Optional<RegularUserDTO> findByUsername(String username);
+    Optional<RegularUserDTO> findByEmail(String email);
 }

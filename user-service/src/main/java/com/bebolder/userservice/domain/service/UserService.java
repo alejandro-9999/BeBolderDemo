@@ -22,6 +22,7 @@ public class UserService {
     }
 
     public UserDTO save(UserDTO UserDTO){
+        validateUser(UserDTO);
         return userRepository.save(UserDTO);
     }
 
@@ -30,5 +31,17 @@ public class UserService {
             userRepository.delete(userId);
             return true;
         }).orElse(false);
+    }
+
+    public void validateUser(UserDTO userDTO){
+        Optional<UserDTO> user;
+        user =  this.userRepository.findByUsername(userDTO.getUsername());
+        if(user.isPresent()){
+            throw new IllegalArgumentException("The username is already in use");
+        }
+        user =  this.userRepository.findByEmail(userDTO.getEmail());
+        if(user.isPresent()){
+            throw new IllegalArgumentException("The email is already in use");
+        }
     }
 }

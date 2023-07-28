@@ -40,4 +40,14 @@ public class RegularUserRepository implements IRegularUserRepository {
     public void delete(long regularUserId) {
         regularUserCrudRepository.deleteById(regularUserId);
     }
+
+    @Override
+    public Optional<RegularUserDTO> findByUsername(String username) {
+        return this.regularUserCrudRepository.findByUsername(username).map(regularUser -> this.regularUserMapper.regularUserToRegularUserDTO(regularUser));
+    }
+
+    @Override
+    public Optional<RegularUserDTO> findByEmail(String email) {
+        return this.regularUserCrudRepository.findByEmail(email).map(regularUser -> this.regularUserMapper.regularUserToRegularUserDTO(regularUser));
+    }
 }

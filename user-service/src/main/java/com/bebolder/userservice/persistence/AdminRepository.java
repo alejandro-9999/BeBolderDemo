@@ -39,5 +39,15 @@ public class AdminRepository implements IAdminRepository {
     public void delete(long adminId) {
         adminCrudRepository.deleteById(adminId);
     }
+
+    @Override
+    public Optional<AdminDTO> findByUsername(String username) {
+        return this.adminCrudRepository.findByUsername(username).map(admin -> adminMapper.adminToAdminDTO(admin));
+    }
+
+    @Override
+    public Optional<AdminDTO> findByEmail(String email) {
+        return this.adminCrudRepository.findByEmail(email).map(admin -> adminMapper.adminToAdminDTO(admin));
+    }
 }
 

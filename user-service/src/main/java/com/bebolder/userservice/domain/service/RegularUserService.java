@@ -1,7 +1,10 @@
 package com.bebolder.userservice.domain.service;
 
 import com.bebolder.userservice.domain.dto.RegularUserDTO;
+import com.bebolder.userservice.domain.dto.SupervisorDTO;
+import com.bebolder.userservice.domain.dto.UserDTO;
 import com.bebolder.userservice.domain.repository.IRegularUserRepository;
+import com.bebolder.userservice.domain.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,10 @@ public class RegularUserService {
     @Autowired
     IRegularUserRepository regularUserRepository;
 
+    @Autowired
+    private IUserRepository userRepository;
+
+
     public List<RegularUserDTO> getAll(){
         return regularUserRepository.getAll();
     }
@@ -23,6 +30,7 @@ public class RegularUserService {
     }
 
     public RegularUserDTO save(RegularUserDTO regularUserDTO){
+        validateRegularUser(regularUserDTO);
         return regularUserRepository.save(regularUserDTO);
     }
 
@@ -31,5 +39,17 @@ public class RegularUserService {
             regularUserRepository.delete(regularUserId);
             return true;
         }).orElse(false);
+    }
+
+    public void validateRegularUser(RegularUserDTO regularUserDTO){
+        Optional<UserDTO> regularUser;
+        regularUser =  this.userRepository.findByUsername(regularUserDTO.getUsername());
+        if(regularUser.isPresent()){
+            throw new IllegalArgumentException("The username is already in use");
+        }
+        regularUser =  this.userRepository.findByEmail(regularUserDTO.getEmail());
+        if(regularUser.isPresent()){
+            throw new IllegalArgumentException("The email is already in use");
+        }
     }
 }

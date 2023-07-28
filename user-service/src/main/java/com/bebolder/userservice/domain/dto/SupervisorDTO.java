@@ -2,9 +2,13 @@ package com.bebolder.userservice.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class SupervisorDTO extends UserDTO {
-
+    private String role = "supervisor";
     public SupervisorDTO() {
     }
 

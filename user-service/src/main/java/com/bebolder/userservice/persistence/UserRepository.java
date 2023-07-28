@@ -40,4 +40,14 @@ public class UserRepository implements IUserRepository {
     public void delete(long userId) {
         userCrudRepository.deleteById(userId);
     }
+
+    @Override
+    public Optional<UserDTO> findByUsername(String username) {
+        return userCrudRepository.findByUsername(username).map(user -> userMapper.userToUserDTO(user));
+    }
+
+    @Override
+    public Optional<UserDTO> findByEmail(String email) {
+        return userCrudRepository.findByEmail(email).map(user -> userMapper.userToUserDTO(user));
+    }
 }

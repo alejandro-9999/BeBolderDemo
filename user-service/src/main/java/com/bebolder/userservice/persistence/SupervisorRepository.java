@@ -42,4 +42,14 @@ public class SupervisorRepository implements ISupervisorRepository {
     public void delete(long supervisorId) {
         supervisorCrudRepository.findById(supervisorId);
     }
+
+    @Override
+    public Optional<SupervisorDTO> findByUsername(String username) {
+        return this.supervisorCrudRepository.findByUsername(username).map(supervisor -> this.supervisorMapper.supervisorToRegularSupervisorDTO(supervisor));
+    }
+
+    @Override
+    public Optional<SupervisorDTO> findByEmail(String email) {
+        return this.supervisorCrudRepository.findByEmail(email).map(supervisor -> this.supervisorMapper.supervisorToRegularSupervisorDTO(supervisor));
+    }
 }

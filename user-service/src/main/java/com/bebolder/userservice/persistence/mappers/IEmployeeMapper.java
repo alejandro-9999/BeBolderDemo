@@ -26,6 +26,7 @@ public interface IEmployeeMapper {
     @Mapping(source = "dateOfEntry", target = "dateOfEntry")
     @Mapping(source = "retirementDate", target = "retirementDate")
     @Mapping(source = "supervisor.id", target = "supervisor.userId")
+    @Mapping(target = "supervisor.role", ignore = true)
     @Mapping(source = "team", target = "team")
     EmployeeDTO toDto(Employee employee);
 

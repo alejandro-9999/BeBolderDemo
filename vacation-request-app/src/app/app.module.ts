@@ -18,12 +18,14 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterEmployeeComponent } from './components/employee/register-employee/register-employee.component';
 import { RegisterTeamComponent } from './components/employee/register-team/register-team.component'; // Asegúrate de importar este módulo
+import { MessagesModule } from 'primeng/messages';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { RegisterTeamComponent } from './components/employee/register-team/regis
     CalendarModule,
     InputTextareaModule,
     DropdownModule,
-    HttpClientModule
+    HttpClientModule,
+    ProgressSpinnerModule,
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

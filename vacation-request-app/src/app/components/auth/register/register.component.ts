@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/User/user.service';
+import { Router } from '@angular/router'
+
 
 @Component({
   selector: 'app-register',
@@ -9,8 +11,10 @@ import { UserService } from 'src/app/services/User/user.service';
 })
 export class RegisterComponent {
   registrationForm: FormGroup;
+  isLoading: boolean = false;
+  messages: any[] = [];
 
-  constructor(private formBuilder: FormBuilder, private userService:UserService ) {
+  constructor(private formBuilder: FormBuilder, private userService:UserService,private router: Router) {
     this.registrationForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -23,15 +27,25 @@ export class RegisterComponent {
   ngOnInit() {}
 
   onSubmit() {
+    this.isLoading = true;
+    this.messages = [];
     if (this.registrationForm.valid) {
       // Perform actions when the form is valid
       const formData = this.registrationForm.value;
       this.userService.saveUser(formData).subscribe(
         (response) => {
-          console.log(response);
+          this.isLoading = false;
+          this.messages = [{ severity: 'success', summary: 'Success', detail: 'Complete Registration' }];
+          localStorage.setItem('currentUser', JSON.stringify(response));
+          this.router.navigate(['/dashboard']);
         },
         (error) => {
-          console.log(error);
+          this.isLoading = false;
+          console.log(error.error.message);
+          this.messages = [{ severity: 'error', summary: 'Error', detail: error.error.message }];
+        },
+        () => {
+          this.isLoading = false;
         }
       );
 

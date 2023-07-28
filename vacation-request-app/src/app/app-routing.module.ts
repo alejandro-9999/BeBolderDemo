@@ -6,6 +6,7 @@ import { RegisterEmployeeComponent } from './components/employee/register-employ
 import { RegisterTeamComponent } from './components/employee/register-team/register-team.component';
 
 const routes: Routes = [
+  { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'register/employee', component: RegisterEmployeeComponent},

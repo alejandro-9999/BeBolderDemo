@@ -5,15 +5,14 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
-
+export class EmployeeService {
   private apiUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 
-  saveUser(formData: any): Observable<any>{
-    const endpoint = `${this.apiUrl}/${formData.userType}/save`;
-    return this.http.post(endpoint, formData);
+  saveUser(id: number): Observable<any>{
+    const endpoint = `employee/${id}`;
+    return this.http.get(endpoint);
   }
 
 }

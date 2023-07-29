@@ -10,9 +10,15 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) { }
 
-  saveUser(id: number): Observable<any>{
+  getEmployee(id: number): Observable<any>{
     const endpoint = `employee/${id}`;
     return this.http.get(endpoint);
+  }
+
+
+  saveEmployee(formData: any): Observable<any>{
+    const endpoint = `${this.apiUrl}/employee/save`;
+    return this.http.post(endpoint, formData);
   }
 
 }

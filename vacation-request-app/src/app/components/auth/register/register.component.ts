@@ -13,7 +13,6 @@ export class RegisterComponent {
   registrationForm: FormGroup;
   isLoading: boolean = false;
   messages: any[] = [];
-
   constructor(private formBuilder: FormBuilder, private userService:UserService,private router: Router) {
     this.registrationForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -35,9 +34,9 @@ export class RegisterComponent {
       this.userService.saveUser(formData).subscribe(
         (response) => {
           this.isLoading = false;
-          this.messages = [{ severity: 'success', summary: 'Success', detail: 'Complete Registration' }];
+          this.messages = [{ severity: 'success', summary: 'Success', detail: 'Completed Registration' }];
           localStorage.setItem('currentUser', JSON.stringify(response));
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/register/employee']);
         },
         (error) => {
           this.isLoading = false;

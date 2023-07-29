@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { EmployeeService } from 'src/app/services/Employee/employee.service';
 
 @Component({
   selector: 'app-register-employee',
@@ -8,6 +10,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class RegisterEmployeeComponent {
 
+  isLoading: boolean = false;
+  messages: any[] = [];
+  user: number;
+
   documentTypes = [
     { name: "Cedula de ciudadania", code: "CC" },
     { name: "Cedula de extrangeria", code: "CE" },
@@ -15,8 +21,9 @@ export class RegisterEmployeeComponent {
 
   employeeForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private employeeService: EmployeeService, private router: Router) {
     this.employeeForm = this.formBuilder.group({
+      user: [''],
       document: ['', Validators.required],
       documentType: ['', Validators.required],
       firstName: ['', Validators.required],
@@ -26,15 +33,37 @@ export class RegisterEmployeeComponent {
       dateOfEntry: ['', Validators.required],
       typeOfContract: ['Labor Contract', Validators.required]
     });
+    console.log(localStorage.getItem('currentUser'));
+    this.user = 0;
+    // this.user = parseInt(localStorage.getItem('currentUser')?.userId || '0', 10);
+    // this.employeeForm.get('userId')?.setValue(this.user);
   }
 
   ngOnInit() {}
 
   onSubmit() {
+
+    this.isLoading = true;
+    this.messages = [];
+
     if (this.employeeForm.valid) {
-      // Perform actions when the form is valid
       const formData = this.employeeForm.value;
-      console.log(formData);
+      this.employeeService.saveEmployee(formData).subscribe(
+        (response) => {
+          this.isLoading = false;
+          this.messages = [{ severity: 'success', summary: 'Success', detail: 'Completed Registration' }];
+          localStorage.setItem('currentUser', JSON.stringify(response));
+          this.router.navigate(['/dashboard']);
+        },
+        (error) => {
+          this.isLoading = false;
+          console.log(error.error.message);
+          this.messages = [{ severity: 'error', summary: 'Error', detail: error.error.message }];
+        },
+        () => {
+          this.isLoading = false;
+        }
+      );
     } else {
       // Perform actions when the form is invalid
       console.log('Invalid form. Please check the fields.');
@@ -68,8 +97,6 @@ export class RegisterEmployeeComponent {
   get dateOfEntryControl(): FormControl {
     return this.employeeForm.get('dateOfEntry') as FormControl;
   }
-
-
 
   get typeOfContractControl(): FormControl {
     return this.employeeForm.get('typeOfContract') as FormControl;

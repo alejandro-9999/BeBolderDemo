@@ -33,10 +33,9 @@ export class RegisterEmployeeComponent {
       dateOfEntry: ['', Validators.required],
       typeOfContract: ['Labor Contract', Validators.required]
     });
-    console.log(localStorage.getItem('currentUser'));
-    this.user = 0;
-    // this.user = parseInt(localStorage.getItem('currentUser')?.userId || '0', 10);
-    // this.employeeForm.get('userId')?.setValue(this.user);
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    this.user = parseInt(currentUser.userId || '0', 10);
+    this.employeeForm.get('user')?.setValue(this.user);
   }
 
   ngOnInit() {}
@@ -52,7 +51,7 @@ export class RegisterEmployeeComponent {
         (response) => {
           this.isLoading = false;
           this.messages = [{ severity: 'success', summary: 'Success', detail: 'Completed Registration' }];
-          localStorage.setItem('currentUser', JSON.stringify(response));
+          localStorage.setItem('currentEmployee', JSON.stringify(response));
           this.router.navigate(['/dashboard']);
         },
         (error) => {

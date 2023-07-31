@@ -19,6 +19,7 @@ public class Employee {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Column(unique = true)
     private String document;
 
     @Column(name = "document_type")
@@ -30,7 +31,7 @@ public class Employee {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", unique = true)
     private String phoneNumber;
 
     private String address;

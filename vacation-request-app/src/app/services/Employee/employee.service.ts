@@ -15,6 +15,13 @@ export class EmployeeService {
     return this.http.get(endpoint);
   }
 
+  getAllEmployees(): Observable<any[]>{
+    return this.http.get<any[]>(`${this.apiUrl}/employee/all`);
+  }
+
+  addTeam(teamId: number, employeeId:number): Observable<any>{
+    return this.http.post(`${this.apiUrl}/team/${teamId}/members/${employeeId}`,[]);
+  }
 
   saveEmployee(formData: any): Observable<any>{
     const endpoint = `${this.apiUrl}/employee/save`;

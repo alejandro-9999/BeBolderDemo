@@ -1,0 +1,25 @@
+<div class="navbar-container">
+  <p-menubar [model]="menuItems">
+    <p-button
+      (click)="op.toggle($event)"
+      icon="pi pi-user"
+      styleClass="p-button-rounded p-button-info p-button-text"
+    ></p-button>
+  </p-menubar>
+</div>
+
+<p-overlayPanel #op>
+  <div class="user-info-container">
+    <div class="user-info-card p-shadow-2">
+      <div class="user-name">{{ currentUser.email }}</div>
+      <div class="user-role">{{ currentUser.role }}</div>
+      <button
+        pButton
+        type="button"
+        label="Logout"
+        (click)="logout()"
+        class="p-button-danger"
+      ></button>
+    </div>
+  </div>
+</p-overlayPanel>

@@ -1,0 +1,8 @@
+<form [formGroup]="addMemberForm" (ngSubmit)="addMemberToTeam()">
+  <p-dropdown formControlName="selectedEmployeeId" [options]="employees" optionLabel="firstName" placeholder="Seleccione un empleado"></p-dropdown>
+  <p-divider></p-divider>
+  <div class="modal-footer">
+    <button class="mx-2 " pRipple type="submit" pButton icon="pi pi-check" label="Agregar" styleClass="p-button-success"></button>
+    <button class="p-button-success" pRipple type="button" pButton icon="pi pi-times" label="Cancelar" (click)="cancel()" styleClass="p-button-danger"></button>
+  </div>
+</form>

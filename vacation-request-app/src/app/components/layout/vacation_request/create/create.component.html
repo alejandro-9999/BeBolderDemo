@@ -1,0 +1,58 @@
+<div class="registration-container">
+  <p-card class="registration-card">
+    <div class="registration-form">
+      <form [formGroup]="vacationRequestForm" (ngSubmit)="onSubmit()">
+        <div class="input-container gap-3">
+          <div class="input-container">
+            <h1>Solicitud de Vacaciones</h1>
+
+            <input
+              placeholder="Días de vacaciones"
+              type="number"
+              pInputNumber
+              formControlName="days"
+            />
+            <input
+              placeholder="Fecha de inicio"
+              type="date"
+              pInputText
+              formControlName="startDate"
+            />
+            <input
+              placeholder="Fecha de fin"
+              type="date"
+              pInputText
+              formControlName="endDate"
+            />
+            <input
+              placeholder="ID del empleado"
+              type="number"
+              pInputNumber
+              formControlName="employeeId"
+            />
+
+            <div class="errors-container" *ngIf="daysControl?.invalid && daysControl?.dirty">
+              <small
+                id="days-help"
+                class="error-msg"
+                *ngIf="daysControl?.hasError('required')"
+              >
+                Los días de vacaciones son requeridos.
+              </small>
+            </div>
+
+            <!-- Add similar error handling for other form controls if necessary -->
+
+          </div>
+        </div>
+        <div class="button-container">
+          <p-button
+            [disabled]="vacationRequestForm.invalid"
+            type="submit"
+            label="Solicitar Vacaciones"
+          ></p-button>
+        </div>
+      </form>
+    </div>
+  </p-card>
+</div>

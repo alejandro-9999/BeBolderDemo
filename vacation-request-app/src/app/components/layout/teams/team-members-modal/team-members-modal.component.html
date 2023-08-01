@@ -1,0 +1,8 @@
+<div class="p-grid">
+  <div class="p-col-12" *ngIf="members.length === 0">No hay integrantes en este equipo.</div>
+  <div class="p-col-12" *ngIf="members.length > 0">
+    <ul>
+      <li *ngFor="let member of members">{{ employeeOptionLabelTemplate(member)  }}</li>
+    </ul>
+  </div>
+</div>

@@ -29,7 +29,6 @@ export class RegisterComponent {
     this.isLoading = true;
     this.messages = [];
     if (this.registrationForm.valid) {
-      // Perform actions when the form is valid
       const formData = this.registrationForm.value;
       this.userService.saveUser(formData).subscribe(
         (response) => {
@@ -50,7 +49,6 @@ export class RegisterComponent {
 
 
     } else {
-      // Perform actions when the form is invalid
       console.log('Invalid form. Please check the fields.');
     }
   }

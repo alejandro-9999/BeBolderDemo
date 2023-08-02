@@ -1,58 +1,69 @@
 <div class="registration-container">
   <p-card class="registration-card">
     <div class="registration-form">
-      <form [formGroup]="vacationRequestForm" (ngSubmit)="onSubmit()">
-        <div class="input-container gap-3">
-          <div class="input-container">
-            <h1>Solicitud de Vacaciones</h1>
+      <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+      <div *ngIf="!isLoading">
+        <form [formGroup]="vacationRequestForm" (ngSubmit)="onSubmit()">
+          <div class="input-container gap-3">
+            <div class="input-container">
+              <h1>Solicitud de Vacaciones</h1>
 
-            <input
-              placeholder="Días de vacaciones"
-              type="number"
-              pInputNumber
-              formControlName="days"
-            />
-            <input
-              placeholder="Fecha de inicio"
-              type="date"
-              pInputText
-              formControlName="startDate"
-            />
-            <input
-              placeholder="Fecha de fin"
-              type="date"
-              pInputText
-              formControlName="endDate"
-            />
-            <input
-              placeholder="ID del empleado"
-              type="number"
-              pInputNumber
-              formControlName="employeeId"
-            />
-
-            <div class="errors-container" *ngIf="daysControl?.invalid && daysControl?.dirty">
-              <small
-                id="days-help"
-                class="error-msg"
-                *ngIf="daysControl?.hasError('required')"
+              <!-- Fecha de inicio -->
+              <input
+                placeholder="Fecha de inicio"
+                type="date"
+                pInputText
+                formControlName="startDate"
+                [min]="calculateStartDate()"
+              />
+              <div
+                class="errors-container"
+                *ngIf="vacationRequestForm.get('startDate')?.invalid && vacationRequestForm.get('startDate')?.dirty"
               >
-                Los días de vacaciones son requeridos.
-              </small>
+                <small
+                  id="startDate-help"
+                  class="error-msg"
+                  *ngIf="vacationRequestForm.get('startDate')?.hasError('required')"
+                >La fecha de inicio es requerida.</small>
+              </div>
+
+              <!-- Fecha de fin -->
+              <input
+                placeholder="Fecha de fin"
+                type="date"
+                pInputText
+                formControlName="endDate"
+                [min]="calculateStartDate()"
+              />
+              <div
+                class="errors-container"
+                *ngIf="vacationRequestForm.get('endDate')?.invalid && vacationRequestForm.get('endDate')?.dirty"
+              >
+                <small
+                  id="endDate-help"
+                  class="error-msg"
+                  *ngIf="vacationRequestForm.get('endDate')?.hasError('required')"
+                >La fecha de fin es requerida.</small>
+                <small
+                  id="endDate-help"
+                  class="error-msg"
+                  *ngIf="vacationRequestForm.hasError('minVacationDays')"
+                >Las vacaciones deben ser de al menos 6 días.</small>
+              </div>
             </div>
-
-            <!-- Add similar error handling for other form controls if necessary -->
-
           </div>
-        </div>
-        <div class="button-container">
-          <p-button
-            [disabled]="vacationRequestForm.invalid"
-            type="submit"
-            label="Solicitar Vacaciones"
-          ></p-button>
-        </div>
-      </form>
+          <div class="button-container">
+            <p-button
+              [disabled]="vacationRequestForm.invalid"
+              type="submit"
+              label="Enviar Solicitud"
+            ></p-button>
+          </div>
+        </form>
+      </div>
+      <div *ngIf="isLoading">
+        <p-progressSpinner></p-progressSpinner>
+      </div>
     </div>
   </p-card>
 </div>
